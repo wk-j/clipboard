@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <ToolCommandName>wk-cb</ToolCommandName>
+    <PackAsTool>true</PackAsTool>
+    <PackageId>wk.Clipboard</PackageId>
+    <Version>0.1.0</Version>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+</Project>
