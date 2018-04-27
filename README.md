@@ -9,7 +9,7 @@ Copy console output to Clipboard without new line
 ## Installation
 
 ```
-dotnet install tool -g wk.Clipboard
+dotnet tool install -g wk.Clipboard
 ```
 
 ## Usage
