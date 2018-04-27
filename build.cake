@@ -1,10 +1,18 @@
 #addin "wk.StartProcess"
+#addin "wk.ProjectParser"
 
 using PS = StartProcess.Processor;
+using ProjectParser;
+
+var name = "Clipboard";
+var project = $"src/{name}/{name}.fsproj";
+var info = Parser.Parse(project);
+var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+var currentDir = new System.IO.DirectoryInfo(".").FullName;
 
 Task("Pack").Does(() => {
     CleanDirectory("publish");
-    DotNetCorePack("src/Clipboard", new DotNetCorePackSettings {
+    DotNetCorePack(project, new DotNetCorePackSettings {
         OutputDirectory = "publish"
     });
 });
@@ -24,9 +32,10 @@ Task("Publish-Nuget")
 Task("Install")
     .IsDependentOn("Pack")
     .Does(() => {
-        PS.StartProcess("rm /Users/wk/.dotnet/tools/wk-cb");
-        PS.StartProcess("dotnet install tool -g wk.Clipboard --source ./publish");
-    });
+        Information(info.Version);
+        PS.StartProcess($"dotnet tool uninstall -g wk.{name}");
+        PS.StartProcess($"dotnet tool install -g wk.{name} --source-feed {currentDir}/publish --version {info.Version}");
+});
 
 var target = Argument("target", "Pack");
 RunTarget(target);
