@@ -33,8 +33,8 @@ Task("Install")
     .IsDependentOn("Pack")
     .Does(() => {
         Information(info.Version);
-        PS.StartProcess($"dotnet tool uninstall -g wk.{name}");
-        PS.StartProcess($"dotnet tool install -g wk.{name} --source-feed {currentDir}/publish --version {info.Version}");
+        PS.StartProcess($"dotnet tool uninstall -g {info.PackageId}");
+        PS.StartProcess($"dotnet tool install -g {info.PackageId} --add-source {currentDir}/publish --version {info.Version}");
 });
 
 var target = Argument("target", "Pack");

@@ -29,8 +29,10 @@ let copy (value: string) =
 [<EntryPoint>]
 let main argv =
     if argv.Length <> 0 then
-        copy argv.[0]  |> ignore
+        //copy argv.[0]  |> ignore
+        TextCopy.Clipboard.SetText argv.[0]
     else
         let data = Console.ReadLine()
-        copy data |> ignore
+        // copy data |> ignore
+        TextCopy.Clipboard.SetText data
     0
