@@ -8,7 +8,14 @@ bin
 obj
 packages
 tools
+publish
 
 .paket
-tools
-publish
+.settings
+.classpath
+.project
+.working
+.publish
+
+target
+BenchmarkDotNet.Artifacts
