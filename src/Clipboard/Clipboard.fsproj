@@ -4,8 +4,7 @@
     <ToolCommandName>wk-cb</ToolCommandName>
     <PackAsTool>true</PackAsTool>
     <PackageId>wk.Clipboard</PackageId>
-    <Version>0.2.1</Version>
-    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Program.fs" />
